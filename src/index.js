@@ -5,8 +5,10 @@ import App from './app/App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from 'styled-components';
 
+import 'semantic-ui-css/semantic.min.css'
 import GlobalStyles from './app/theme/GlobalStyles';
 import Theme from './app/theme/theme';
+
 
 ReactDOM.render(
   <React.StrictMode>

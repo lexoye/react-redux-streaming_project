@@ -1,40 +1,78 @@
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Button from './Button';
+import { Button } from 'semantic-ui-react';
+import axios from '../../axios';
+import requests from '../../request';
 
-const StyledHero = styled.section`
-  section {
-    position: absolute;
-  }
+function Hero() {
+  const [movie, setMovie] = useState([]);
 
-  img {
-    width: 100%;
-  }
+  useEffect(() => {
+    async function fetchData() {
+      const request = await axios.get(requests.fetchNetflixOriginals);
+      setMovie(
+        request.data.results[
+          Math.floor(Math.random() * request.data.results.length - 1)
+        ]
+      );
+      return request;
+    }
+    fetchData();
+  }, []);
 
-  h2 {
-    color: ${(props) => props.theme.colors.black};
-    font-weight: 400;
-    max-width: 20ch;
-  }
+  console.log(movie)
 
-  .button-container {
-    position: absolute;
-    bottom: 40%;
-    right: 55%;
-  }
-`
+  const StyledHero = styled.section`
 
-const Hero = () => {
+    .hero {
+      background-size: cover;
+      background-image: url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}");
+      background-position: 'center center';
+      object-fit: contain;
+      height: 448px;
+      display: flex;
+    }
+
+    .hero__content {
+      align-self: flex-end;
+      margin: 0 2.5rem 2rem;
+      max-height: 300px;
+    }
+
+    .hero__title {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 3.5rem;
+      padding-bottom: 1rem;
+    }
+
+    .hero__description {
+      max-width: 600px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero__button-container {
+
+    }
+
+    .hero__button {
+      padding: 0.5rem 3rem;
+      margin-right: 1rem;
+    }
+  `
+
   return (
     <StyledHero>
-      <img alt="test" src="https://via.placeholder.com/1440x600/F5F5F1/FAFAFA?text=Show Poster" />
-
-      <div className="button-container">
-      <h2>The greatest show you’ll ever see!</h2>
-        <div>
-          <Button>Play</Button>
-          <Button>My List</Button>
+      <section className="hero">
+        <div className="hero__content">
+          <h1 className="hero__title">{movie?.title || movie?.name || movie?.original_name}</h1>
+          <div className="hero__description">{movie?.overview}</div>
+          <div className="hero__button-container">
+            <Button className="hero__button">Play</Button>
+            <Button className="hero__button">My List</Button>
+          </div>
         </div>
-      </div>
+      </section>
     </StyledHero>
   );
 }

@@ -14,8 +14,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
-    font-size: 5rem;
+    font-size: 4rem;
     margin: rem 0;
+    color: ${(props) => props.theme.colors.white};
+    font-weight: 400;
   }
 
   h2 {
