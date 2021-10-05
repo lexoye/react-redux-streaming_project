@@ -20,8 +20,6 @@ function Hero() {
     fetchData();
   }, []);
 
-  console.log(movie)
-
   const StyledHero = styled.section`
 
     .hero {
@@ -60,13 +58,15 @@ function Hero() {
       margin-right: 1rem;
     }
   `
-
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + '...' : str;
+  }
   return (
     <StyledHero>
       <section className="hero">
         <div className="hero__content">
           <h1 className="hero__title">{movie?.title || movie?.name || movie?.original_name}</h1>
-          <div className="hero__description">{movie?.overview}</div>
+          <div className="hero__description">{truncate(movie?.overview, 150)}</div>
           <div className="hero__button-container">
             <Button className="hero__button">Play</Button>
             <Button className="hero__button">My List</Button>

@@ -32,7 +32,7 @@ const Nav = () => {
         <li><Link to='/my-account'>My Account</Link></li>
         <li><Link to='/my-list'>My List</Link></li>
         <li><Link to='/new-releases'>New Releases</Link></li>
-        <li><Link to='/top-shows'>Top Shows</Link></li>
+        <li><Link to='/top-movies'>Top Movies</Link></li>
       </ul>
     </StyledNav>
   );

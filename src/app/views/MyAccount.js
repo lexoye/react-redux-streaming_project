@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-
-import Button from '../components/Button';
-
+import { Button, Input } from 'semantic-ui-react';
 
 const MyAccountStyles = styled.section`
 
@@ -11,48 +9,57 @@ const MyAccountStyles = styled.section`
     max-width: 20ch;
   }
 
-  .MyAccount {
+  .my_account {
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
   }
 
-  .MyAccount-form {
+  .my_account__form {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
   }
 
-  .MyAccount-pic {
+  .my_account__pic {
     margin: 1rem;
   }
 
-  .MyAccount-pic img {
+  .my_account__pic img {
     border-radius: 50%;
   }
 
-  .MyAccount-data {
+  .my_account__data {
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .my_account__data > .ui.input {
+    width: 400px;
+    justify-content: center;
+  }
+  .my_account__data > .ui.button {
+    margin-top: 2rem;
   }
 `
 
 function MyAccount() {
   return (
     <MyAccountStyles>
-      <section className="MyAccount">
+      <section className="my_account">
         <h2>My Account</h2>
-        <div className="MyAccount-form">
-          <div className="MyAccount-pic">
+        <div className="my_account__form">
+          <div className="my_account__pic">
             <img alt="Profile" src="https://via.placeholder.com/106x106" />
           </div>
-          <div className="MyAccount-data">
-            <input></input>
-            <input></input>
-            <input></input>
-            <input></input>
+          <div className="my_account__data">
+            <Input />
+            <Input />
+            <Input />
+            <Input />
             <Button>Save</Button>
           </div>
         </div>

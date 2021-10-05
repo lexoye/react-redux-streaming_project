@@ -30,13 +30,18 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
-  input {
+  .ui.input input {
     background-color: ${(props) => props.theme.colors.lightBlack};
     border: none;
     padding: 1rem;
-    margin: 1rem;
+    margin: 1rem 0;
     width: 100%;
     max-width: 400px;
+  }
+
+  .ui.button:hover {
+    background-color: ${(props) => props.theme.colors.lightRed};
+    color: ${(props) => props.theme.colors.white};
   }
 `;
 
